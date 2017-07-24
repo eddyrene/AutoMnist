@@ -62,8 +62,8 @@ void Mnist(int origin, int h, int accuracy,string prefijo, int sizeTrai )
     vector< vector<double >> inputs, outputs, IN;
     int Es=sizeTrai;
     //int Es=60000;
-    my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_train_100.csv", Es, IN, outputs);
-    //my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_train.csv", Es, IN, outputs);
+    //my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_train_100.csv", Es, IN, outputs);
+    my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_train.csv", Es, IN, outputs);
     //my_net->loadDataNumbers("../../mnist_train.csv", Es, IN, outputs);
     //my_net->printMat("emtrada",IN);
     vector<double> FinalErrors;
@@ -157,7 +157,7 @@ void innerMnist(string fileOpen,int origin, int h, int accuracy,string prefijo, 
     clock_gettime(CLOCK_MONOTONIC, &start);
     //set_conio_terminal_mode();
     srand(time(NULL));
-    while((flag==true) && (times <30) && (accTraining<accuracy) )//&& !kbhit() )
+    while((flag==true) && (times <1) && (accTraining<accuracy) )//&& !kbhit() )
     {
        // reset_terminal_mode();
        cout<<"###########################"<< times <<"#################################"""<<endl;
@@ -261,17 +261,17 @@ int main()
 
     //void innerMnist(string fileOpen,int origin, int h, int accuracy,string prefijo, int sizeTrai)
     //void Mnist(int origin, int h, int accuracy,string prefijo, int sizeTrai )
-    int tamData=100;
+    int tamData=60000;
     cout<<"%%%%%%%%%%% entrando capa 1"<<endl;
-    Mnist(ci, h1, 90,"data/l1",tamData);
+    Mnist(ci, h1, 58000,"data/l1",tamData);
     cout<<"%%%%%%%%%%%%%%%%%%%%%%% entrando capa 2"<<endl;
-    innerMnist("data/l1input", h1-1, h2, 90,"data/l2",tamData);
+    innerMnist("data/l1input", h1-1, h2, 58000,"data/l2",tamData);
     cout<<"%%%%%%%%%%% entrando capa 3"<<endl;
-    innerMnist("data/l2input",h2-1, h3, 90,"data/l3",tamData);
+    innerMnist("data/l2input",h2-1, h3, 58000,"data/l3",tamData);
     cout<<"%%%%%%%%%% entrando capa 4"<<endl;
-    innerMnist("data/l3input",h3-1, h4, 90,"data/l4",tamData);
+    innerMnist("data/l3input",h3-1, h4, 58000,"data/l4",tamData);
     cout<<"%%%%%%%%%%% entrando capa 5"<<endl;
-    innerMnist("data/l4input",h4-1, h5, 90,"data/l5",tamData);
+    innerMnist("data/l4input",h4-1, h5, 58000,"data/l5",tamData);
 
     cout<<"********************aprendizaje modulado***************************"<<endl;
     //return 0;
@@ -294,10 +294,10 @@ int main()
     my_net->getVectorLayers()->at(3)->setMat(D);
     my_net->getVectorLayers()->at(4)->setMat(E);
 
-    int Test =10;
+    int Test =10000;
     vector< vector<double >> O, NIT;
-    //my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_test.csv", Test, NIT, O);
-     my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_test_10.csv", Test, NIT, O);
+    my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_test.csv", Test, NIT, O);
+    // my_net->loadDataNumbers("/home/mica/Desktop/TopIA/mnistdataset/mnist_test_10.csv", Test, NIT, O);
     //my_net->loadDataNumbers("../../mnist_test.csv", Test, NIT, O);
     //my_net->printMat("\n Entrada: \n", NIT);
     //my_net->printMat("\n Salidas: \n", O);
