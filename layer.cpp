@@ -40,6 +40,24 @@ void Layer::sigmod()
     }
 }
 
+
+void Layer::tan()
+{
+    //cout<<"\n se activo \n "<<endl;
+    for(int i =0; i<vectNeuron->size();i++ )
+    {
+        float exp_value;
+        float return_value;
+        double x = vectNeuron->at(i)->getVal();
+        return_value = tanh(x);
+        //exp_value = exp((double) -x);
+        /*** Final sigmoid value ***/
+        //return_value = 1 / (1 + exp_value);
+        vectNeuron->at(i)->setVal(return_value);
+        vectNeuron->at(0)->setVal(1);
+       // cout<<vectNeuron->at(i)->getVal()<<"  ";
+    }
+}
 void Layer::sigmod2()
 {
     //cout<<"\n se activo \n "<<endl;

@@ -203,7 +203,7 @@ void Network::forward()
         if(i!=0)
         {
             matrixtoVectNeuron(r,vectLayer->at(i)->getVectNeuron());
-            vectLayer->at(i)->sigmod();
+            vectLayer->at(i)->tan();
             delete r;
         }
         mat * neu=  vectNeurontoMatrix( vectLayer->at(i)->getVectNeuron());
@@ -219,7 +219,7 @@ void Network::forward()
 
     }
     matrixtoVectNeuron(r,vectLayer->at(vectLayer->size()-1)->getVectNeuron());
-    vectLayer->at(vectLayer->size()-1)->sigmod();
+    vectLayer->at(vectLayer->size()-1)->tan();
     delete r;
 
     /*int pos =vectLayer->size()-1;

@@ -77,7 +77,7 @@ void Mnist(int origin, int h, int accuracy,string prefijo, int sizeTrai )
     clock_gettime(CLOCK_MONOTONIC, &start);
     //set_conio_terminal_mode();
     srand(time(NULL));
-    while((flag==true) && (times <1) && (accTraining<accuracy) )//&& !kbhit() )
+    while((flag==true) && (times <100) && (accTraining<accuracy) )//&& !kbhit() )
     {
        // reset_terminal_mode();
        cout<<"###########################"<< times <<"#################################"""<<endl;
@@ -157,7 +157,7 @@ void innerMnist(string fileOpen,int origin, int h, int accuracy,string prefijo, 
     clock_gettime(CLOCK_MONOTONIC, &start);
     //set_conio_terminal_mode();
     srand(time(NULL));
-    while((flag==true) && (times <1) && (accTraining<accuracy) )//&& !kbhit() )
+    while((flag==true) && (times <200) && (accTraining<accuracy) )//&& !kbhit() )
     {
        // reset_terminal_mode();
        cout<<"###########################"<< times <<"#################################"""<<endl;
